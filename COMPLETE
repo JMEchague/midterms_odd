@@ -1,0 +1,676 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    int age;
+    string fitnessGoal;
+    string dietaryRestriction;
+    int availableTime;
+    string healthCondition;
+    float weight, height, bmi;
+    string locationPreference;
+    string workoutIntensity;
+    float dailyCalories = 2000;
+    float waterIntake = 1.5;
+    string dietRecommendation;
+    //inputs
+    cout << "Enter your age: ";
+    cin >> age;
+
+    cout << "What is your fitness goal? (build muscle / lose weight / maintain): ";
+    cin.ignore();
+    getline(cin, fitnessGoal);
+
+    cout << "Do you have any dietary restrictions? (vegan/ vegetarian / pescatarian / gluten-free / keto / none): ";
+    getline(cin, dietaryRestriction);
+
+    cout << "How many hours do you have available weekly for exercises? ";
+    cin >> availableTime;
+
+    cout << "Do you have any existing health conditions? (if none, type 'none'): ";
+    cin.ignore();
+    getline(cin, healthCondition);
+
+    if (healthCondition != "none") {
+        cout << "Please consult a professional for medical advice." << endl;
+    }
+
+    cout << "Enter your weight (in kg): ";
+    cin >> weight;
+
+    cout << "Enter your height (in meters): ";
+    cin >> height;
+
+    cout << "What is your preferred workout intensity? (low / medium / high): ";
+    cin.ignore();
+    getline(cin, workoutIntensity);
+
+    cout << "Where do you prefer to work out? (gym / outdoor / home): ";
+    getline(cin, locationPreference);
+
+    bmi = weight / (height * height);
+    //calories
+    if (age < 25) {
+        dailyCalories += 300;
+    }
+    else if (age > 50) {
+        dailyCalories -= 300;
+    }
+    //intensity
+    if (workoutIntensity == "low") {
+        waterIntake += 0.5;
+        if (fitnessGoal == "build muscle") {
+            dailyCalories -= 100;
+        }
+    }
+    else if (workoutIntensity == "medium") {
+        waterIntake += 1.0;
+        if (fitnessGoal == "build muscle") {
+            dailyCalories += 100;
+        }
+    }
+    else if (workoutIntensity == "high") {
+        waterIntake += 1.5;
+        if (fitnessGoal == "build muscle") {
+            dailyCalories += 200;
+        }
+    }
+    //BMI = calories
+
+    string exerciseSuggestion;
+    string routine;
+    string foods;
+    if (fitnessGoal == "lose weight") {
+        if (bmi >= 25) {
+            exerciseSuggestion = "Intense cardio and strength training are suggested.";
+            routine = "\"We want to Suggest a Full week work out plan you can follow\"";
+            routine += "\n Monday : Cardio";
+            routine += "\n  Warm-up : 5-10 minutes of brisk walking or light jogging";
+            routine += "\n  High-Intensity Interval Training ( HIIT )";
+            routine += "\n   30 seconds of sprinting";
+            routine += "\n   1-minute walking";
+            routine += "\n   and Repeat for 20 minutes";
+            routine += "\n   Cool dowm : 5-10 minutes of stretching\n";
+            routine += "\n Tuesday : Stregnth Training";
+            routine += "\n  Warm-up : 5-10 minutes of brisk walking or light jogging";
+            routine += "\n  Circuit ( 3 Sets of 10-12 reps each )";
+            routine += "\n   Squats";
+            routine += "\n   Push-ups (Modified if needed)";
+            routine += "\n   Bent-over rows with dumbbells";
+            routine += "\n   Plank ( Hold for 30 seconds )";
+            routine += "\n   Cool down : 5-10 minutes of stretching\n";
+            routine += "\n Wednesday : Rest or Light Activity \n";
+            routine += "\n Thursday : Cardio";
+            routine += "\n  Warm-up : 5-10 minutes of brisk walking or light jogging";
+            routine += "\n  Steady-state Cardio";
+            routine += "\n   30 minutes of cycling, swimming, or fast walking";
+            routine += "\n   Cool down : 5-10 minutes of stretching\n";
+            routine += "\n Friday : Strength Training";
+            routine += "\n  Warm-up : 5-10 minutes of brisk walking or light jogging";
+            routine += "\n  Circuit ( 3 Sets of 10-12 reps each )";
+            routine += "\n   Lunges";
+            routine += "\n   Dumbbell Shoulder press";
+            routine += "\n   Deadlifts";
+            routine += "\n   Russian Twist ( 10 - 12 reps each )";
+            routine += "\n   Cool down : 5-10 minutes of stretching\n";
+            routine += "\n Saturday : Cardio";
+            routine += "\n  Warm-up : 5-10 minutes of brisk walking or light jogging";
+            routine += "\n  High-Intensity Interval Training ( HIIT )";
+            routine += "\n   30 seconds of jumping jacks";
+            routine += "\n   1-minute walking";
+            routine += "\n   and Repeat for 20 minutes";
+            routine += "\n   Cool dowm : 5-10 minutes of stretching\n";
+            routine += "\n Sunday : Rest or Light Activity";
+            routine += "\n But always listen to your body to prevent injuries, A Proper diet, and Stay Hydrated!";
+            routine += "\n Always do your best through out your journey of becoming Fit\n";
+            dailyCalories -= 500;
+        }
+        else {
+            exerciseSuggestion = "Moderate cardio and light weight training are suggested.";
+            routine = "\"We want to Suggest a Full week work out plan you can follow\"";
+            routine += "\n Monday : Cardio";
+            routine += "\n  Warm-up : 5-10 minutes of brisk walking or light jogging";
+            routine += "\n  Moderate Cardio : ";
+            routine += "\n   20-30 minutes of cycling, brisk walking, or swimming";
+            routine += "\n   and Repeat for 20 minutes";
+            routine += "\n   Cool dowm : 5-10 minutes of stretching\n";
+            routine += "\n Tuesday : Stregnth Training";
+            routine += "\n  Warm-up : 5-10 minutes of brisk walking or light jogging";
+            routine += "\n  Circuit ( 2 Sets of 10-12 reps each )";
+            routine += "\n   Bodyweight squat";
+            routine += "\n   Dumbbell chest press (Light weights)";
+            routine += "\n   Seated Rows with resistant band";
+            routine += "\n   Standing Calf raises";
+            routine += "\n   Cool down : 5-10 minutes of stretching\n";
+            routine += "\n Wednesday : Rest or Light Activity \n";
+            routine += "\n Thursday : Cardio";
+            routine += "\n  Warm-up : 5-10 minutes of brisk walking or light jogging";
+            routine += "\n  Moderate Cardio : ";
+            routine += "\n   20 - 30 minutes of elliptical training or rowing";
+            routine += "\n   Cool down : 5-10 minutes of stretching\n";
+            routine += "\n Friday : Strength Training";
+            routine += "\n  Warm-up : 5-10 minutes of brisk walking or light jogging";
+            routine += "\n  Circuit ( 2 Sets of 10-12 reps each )";
+            routine += "\n   Lunges";
+            routine += "\n   Dumbbell Shoulder press ( Light Weight )";
+            routine += "\n   Resistance Band bicep curls";
+            routine += "\n   Plank ( Hold for 20 - 30 seconds )";
+            routine += "\n   Cool down : 5-10 minutes of stretching\n";
+            routine += "\n Saturday : Cardio";
+            routine += "\n  Warm-up : 5-10 minutes of brisk walking or light jogging";
+            routine += "\n  Moderate Cardio : ";
+            routine += "\n   20 - 30 minutes of Dancing, Hiking, or light jogging";
+            routine += "\n   and Repeat for 20 minutes";
+            routine += "\n   Cool dowm : 5-10 minutes of stretching\n";
+            routine += "\n Sunday : Rest or Light Activity";
+            routine += "\n But always listen to your body to prevent injuries, A Proper diet, and Stay Hydrated!\n";
+            dailyCalories -= 250;
+        }
+    }
+    else if (fitnessGoal == "build muscle") {
+        if (availableTime > 7) {
+            exerciseSuggestion = "Heavy weight training with minimal cardio is advised.";
+            routine = "\"We want to Suggest a Full week work out plan you can follow\"";
+            routine += "\n Monday : Upper Body";
+            routine += "\n  Warm-up : 5-10 minutes of brisk walking or light jogging";
+            routine += "\n   Bench Press : 4 sets of 6-8 reps";
+            routine += "\n   Bent-over Rows : 4 sets of 6-8 reps ";
+            routine += "\n   Shoulder Press : 3 sets of 8-10 reps";
+            routine += "\n   Pull-Ups (or Lat Pulldown if needed) : 3 sets of 8-10 reps";
+            routine += "\n   Bicep curls : 3 sets of 10-12 reps";
+            routine += "\n   Tricep Dips : 3 sets of 10-12 reps";
+            routine += "\n   Cool dowm : 5-10 minutes of stretching\n";
+            routine += "\n Tuesday : Lower Body";
+            routine += "\n  Warm-up : 5-10 minutes of brisk walking or light jogging";
+            routine += "\n   Squat : 4 sets of 6-8 reps";
+            routine += "\n   Deadlifts : 4 sets of 6-8 reps";
+            routine += "\n   Leg Press : 3 sets of 8-10 reps";
+            routine += "\n   Lunges : 3 sets of 10-12 reps per leg";
+            routine += "\n   Hamstring Curls : 3 sets of 10-12 reps";
+            routine += "\n   Calf Raises : 3 sets of 15 reps";
+            routine += "\n   Cool down : 5-10 minutes of stretching\n";
+            routine += "\n Wednesday : Rest or Light Activity \n";
+            routine += "\n Thursday : Upper Body";
+            routine += "\n  Warm-up : 5-10 minutes of brisk walking or light jogging";
+            routine += "\n   Incline Bench Press : 4 sets of 6-8 reps";
+            routine += "\n   Dumbbell Rows : 4 sets of 6-8 reps";
+            routine += "\n   Military Press : 3 sets of 8-10 reps";
+            routine += "\n   T-Bar Rows : 3 sets of 8-10 reps";
+            routine += "\n   Hammer Curls : 3 sets of 10-12 reps";
+            routine += "\n   Tricep Extensions : 3 sets of 10-12 reps";
+            routine += "\n   Cool down : 5-10 minutes of stretching\n";
+            routine += "\n Friday : Lower Body";
+            routine += "\n  Warm-up : 5-10 minutes of brisk walking or light jogging";
+            routine += "\n   Front Squats : 4 sets of 6-8 reps";
+            routine += "\n   Romanian Deadlifts : 4 sets of 6-8 reps";
+            routine += "\n   Leg Extensions : 3 sets of 10-12 reps";
+            routine += "\n   Step-Ups : 3 sets of 10-12 reps per leg";
+            routine += "\n   Glute Bridges : 3 sets of 10-12 reps";
+            routine += "\n   Seated Calf Raises : 3 sets of 15 reps";
+            routine += "\n   Cool down : 5-10 minutes of stretching\n";
+            routine += "\n Saturday : Actice Recovery ";
+            routine += "\n  (to prevent injury, reduce muscle soreness, increase blood flow, and over all mental well being)";
+            routine += "\n Sunday : Rest ";
+            routine += "\n Stay Consistent! and remember the importance of proper form to avoid injury :)\n";
+            dailyCalories += 500;
+        }
+        else {
+            exerciseSuggestion = "Moderate weight training with some cardio is recommended.";
+            routine = "\"We want to Suggest a Full week work out plan you can follow\"";
+            routine += "\n Monday : Upper Body";
+            routine += "\n  Warm-up : 5-10 minutes of brisk walking or light jogging";
+            routine += "\n   Bench Press : 3 sets of 8-10 reps";
+            routine += "\n   Bent-over Rows : 3 sets of 8-10 reps ";
+            routine += "\n   Shoulder Press : 3 sets of 10 reps";
+            routine += "\n   Lat Pulldown : 3 sets of 10 reps";
+            routine += "\n   Bicep curls : 2 sets of 10 reps";
+            routine += "\n   Tricep Dips : 2 sets of 10 reps";
+            routine += "\n   Cool dowm : 5-10 minutes of stretching\n";
+            routine += "\n Tuesday : Lower Body";
+            routine += "\n  Warm-up : 5-10 minutes of brisk walking or light jogging";
+            routine += "\n   Squat : 3 sets of 8-10 reps";
+            routine += "\n   Deadlifts : 3 sets of 8-10 reps";
+            routine += "\n   Leg Press : 3 sets of 10 reps";
+            routine += "\n   Lunges : 3 sets of 10 reps per leg (Body weight/Light dumbbells)";
+            routine += "\n   Hamstring Curls : 3 sets of 10 reps";
+            routine += "\n   Calf Raises : 3 sets of 15 reps (Body weight)";
+            routine += "\n   Cool down : 5-10 minutes of stretching\n";
+            routine += "\n Wednesday : Cardio ";
+            routine += "\n  Warm-up : 5-10 minutes of brisk walking or light jogging";
+            routine += "\n   Steady-state cardio : 30 minutes of brisk walking or cycling";
+            routine += "\n   Cool down : 5-10 minutes of stretching\n";
+            routine += "\n Thursday : Upper Body";
+            routine += "\n  Warm-up : 5-10 minutes of brisk walking or light jogging";
+            routine += "\n   Incline Bench Press : 3 sets of 8-10 reps";
+            routine += "\n   Dumbbell Rows : 3 sets of 8-10 reps";
+            routine += "\n   Military Press : 3 sets of 10 reps";
+            routine += "\n   T-Bar Rows : 3 sets of 10 reps";
+            routine += "\n   Hammer Curls : 2 sets of 10 reps";
+            routine += "\n   Tricep Extensions : 2 sets of 10 reps";
+            routine += "\n   Cool down : 5-10 minutes of stretching\n";
+            routine += "\n Friday : Lower Body";
+            routine += "\n  Warm-up : 5-10 minutes of brisk walking or light jogging";
+            routine += "\n   Front Squats : 3 sets of 8-10 reps";
+            routine += "\n   Romanian Deadlifts : 3 sets of 8-10 reps";
+            routine += "\n   Leg Extensions : 3 sets of 10 reps";
+            routine += "\n   Step-Ups : 3 sets of 10 reps per leg (Body weight/Light dumbbells)";
+            routine += "\n   Glute Bridges : 3 sets of 10 reps";
+            routine += "\n   Seated Calf Raises : 3 sets of 15 reps";
+            routine += "\n   Cool down : 5-10 minutes of stretching\n";
+            routine += "\n Saturday : Actice Recovery ";
+            routine += "\n  (to prevent injury, reduce muscle soreness, increase blood flow, and over all mental well being)";
+            routine += "\n Sunday : Rest ";
+            routine += "\n Stay Consistent! and remember the importance of proper form to avoid injury :)\n";
+            dailyCalories -= 250;
+        }
+    }
+    else if (fitnessGoal == "maintain") {
+        exerciseSuggestion = "A balanced mix of cardio and weight training is recommended.";
+        routine = "\"We want to Suggest a Full week work out plan you can follow\"";
+        routine += "\n Monday : Cardio & Upper Body";
+        routine += "\n  Warm-up : 5-10 minutes of brisk walking or light jogging";
+        routine += "\n  Circuit (3 sets) : ";
+        routine += "\n   Push-ups : 12 reps";
+        routine += "\n   Bent-Over Rows : 12 reps (moderate weight)";
+        routine += "\n   Dumbbell Shoulder Press : 12 reps (moderate weight)";
+        routine += "\n   Cardio : 20 minutes of jogging or cycling";
+        routine += "\n   Cool dowm : 5-10 minutes of stretching\n";
+        routine += "\n Tuesday : Lower Body";
+        routine += "\n  Warm-up : 5-10 minutes of brisk walking or light jogging";
+        routine += "\n  Circuit (3 sets) : ";
+        routine += "\n   Squats : 12 reps (moderate weight)";
+        routine += "\n   Lunges : 10 reps per leg (bodyweight or light dumbbells)";
+        routine += "\n   Deadlifts : 12 reps (moderate weight)";
+        routine += "\n   Cool down : 5-10 minutes of stretching\n";
+        routine += "\n Wednesday : Cardio";
+        routine += "\n  Interval Cardio : ";
+        routine += "\n   1 minute fast-paced running";
+        routine += "\n   2 minutes walking";
+        routine += "\n   Repeat for 20-30 minutes";
+        routine += "\n   Cool down : 5-10 minutes of stretching\n";
+        routine += "\n Thursday : Upper Body";
+        routine += "\n  Warm-up : 5-10 minutes of brisk walking or light jogging";
+        routine += "\n  Circuit (3 sets) : ";
+        routine += "\n   Incline Bench Press : 12 reps (moderate weight)";
+        routine += "\n   Dumbbell Flyes : 12 reps (moderate weight)";
+        routine += "\n   Tricep Dips (or Bench Dips) : 12 reps";
+        routine += "\n   Cardio : 20 minutes of swimming or brisk walking";
+        routine += "\n   Cool down : 5-10 minutes of stretching\n";
+        routine += "\n Friday : Lower Body";
+        routine += "\n  Warm-up : 5-10 minutes of brisk walking or light jogging";
+        routine += "\n  Circuit (3 sets) :";
+        routine += "\n   Leg Press : 12 reps (moderate weight)";
+        routine += "\n   Step-Ups : 10 reps per leg (bodyweight or light dumbbells)";
+        routine += "\n   Calf Raises : 15 reps (bodyweight)";
+        routine += "\n   Cool down : 5-10 minutes of stretching\n";
+        routine += "\n Saturday : Full Body Cardio";
+        routine += "\n  Warm-up : 5-10 minutes of brisk walking or light jogging";
+        routine += "\n  Cardio : ";
+        routine += "\n   30-40 minutes of any full-body cardio activity (e.g., hiking, dancing, rowing)";
+        routine += "\n   Cool dowm : 5-10 minutes of stretching\n";
+        routine += "\n Sunday : Rest or Light Activity";
+        routine += "\n This routine will is a mixed of fitness and enjoying variety of activities to maintain your weight :)\n";
+    }
+
+    if (locationPreference == "gym") {
+        exerciseSuggestion += " In the gym, focus on cardio machines and free weights.";
+    }
+    else if (locationPreference == "home") {
+        exerciseSuggestion += " At home, try bodyweight exercises, yoga, and resistance bands.";
+    }
+    else if (locationPreference == "outdoor") {
+        exerciseSuggestion += " Outdoors, focus on running, cycling, or hiking.";
+    }
+
+    if (dietaryRestriction == "vegetarian") {
+        dietRecommendation = "Focus on dairy and eggs for proteins, whole grains, vegetables, and include B12 and Omega-3 sources like flaxseeds.";
+    }
+    else if (dietaryRestriction == "vegan") {
+        dietRecommendation = "Focus on plant-based proteins like beans, tofu, brown rice, vegetables, soy milk, broccoli.";
+    }
+    else if (dietaryRestriction == "pescatarian") {
+        dietRecommendation = "Base your diet on fish for protein, especially fatty fish like salmon, and include whole grains and vegetables.";
+    }
+    else if (dietaryRestriction == "gluten-free") {
+        dietRecommendation = "Opt for naturally gluten-free foods like rice, quinoa, and vegetables. Be cautious about cross-contamination.";
+    }
+    else if (dietaryRestriction == "keto") {
+        dietRecommendation = "Focus on high fats and low carbs. Include fatty fish, meats, eggs, cheese, nuts, and low-carb vegetables like leafy greens.";
+    }
+    else {
+        dietRecommendation = "Maintain a balanced diet with lean meats, fish, whole grains, and vegetables, limiting processed foods.";
+    }
+
+    if (dietaryRestriction == "vegan" && fitnessGoal == "lose weight") {
+        foods = "\n The Meal Plan we recommend for your Diet";
+        foods += "\n BREAKFAST : ";
+        foods += "\n    Start with a refreshing smoothie made with unsweetened almond milk, spinach, a frozen banana,";
+        foods += "\n    and a handful of berries. Add a scoop of plant-based protein powder for an extra boost.";
+        foods += "\n LUNCH : ";
+        foods += "\n    A hearty salad with mixed greens, cherry tomatoes, cucumbers, shredded carrots, ";
+        foods += "\n    and a generous serving of chickpeas. Top it off with a light lemon-tahini dressing.";
+        foods += "\n SNACK : ";
+        foods += "\n    Sliced cucumber and carrot sticks with a side of hummus.";
+        foods += "\n DINNER : ";
+        foods += "\n    A delicious bowl of vegetable and lentil curry served over cauliflower rice.";
+        foods += "\n    Add some steamed broccoli or other favorite veggies for that extra crunch.";
+        foods += "\n BEFORE BED : ";
+        foods += "\n     A small serving of vegan Greek-style yogurt with a sprinkle of flaxseeds or chia seeds.\n";
+    }
+    else if (dietaryRestriction == "vegan" && fitnessGoal == "build muscle") {
+        foods = "\n The Meal Plan we recommend for you";
+        foods += "\n BREAKFAST : ";
+        foods += "\n    Kick off your day with a tofu scramble packed with bell peppers, onions, spinach,";
+        foods += "\n    and mushrooms. Add a slice of whole grain toast with avocado spread, plus a side";
+        foods += "\n    of fruit like an apple or a banana.";
+        foods += "\n LUNCH : ";
+        foods += "\n    A hearty quinoa salad with chickpeas, cherry tomatoes, cucumbers, carrots, and a ";
+        foods += "\n    tahini dressing. Throw in some roasted sweet potatoes for extra nutrients.";
+        foods += "\n SNACK : ";
+        foods += "\n    A vegan protein smoothie made with almond milk, a scoop of plant-based protein powder";
+        foods += "\n    a handful of spinach, frozen berries, and a spoonful of almond butter.";
+        foods += "\n DINNER : ";
+        foods += "\n    Lentil and vegetable stir-fry with tofu or tempeh, served over brown rice.";
+        foods += "\n    Add some steamed broccoli or bok choy on the side for that extra crunch.";
+        foods += "\n BEFORE BED : ";
+        foods += "\n    A small bowl of vegan Greek-style yogurt with a sprinkle of nuts and seeds, or a handful of edamame.\n";
+    }
+    else if (dietaryRestriction == "vegan" && fitnessGoal == "maintain") {
+        foods = "\n The Meal Plan we recommend for your Diet";
+        foods += "\n BREAKFAST : ";
+        foods += "\n    Start with overnight oats made with almond milk, chia seeds, and topped with fresh berries";
+        foods += "\n    and a drizzle of maple syrup. Add a small handful of nuts or seeds for extra protein.";
+        foods += "\n LUNCH : ";
+        foods += "\n    A colorful Buddha bowl with a base of brown rice or quinoa, mixed greens, cherry tomatoes, shredded carrots,";
+        foods += "\n    cucumber, avocado, and a generous serving of black beans. Drizzle with a tangy lemon-tahini dressing.";
+        foods += "\n SNACK : ";
+        foods += "\n    Hummus with a variety of sliced veggies like bell peppers, carrots, and celery sticks.";
+        foods += "\n DINNER : ";
+        foods += "\n    A hearty vegetable and lentil soup paired with a slice of whole grain bread.";
+        foods += "\n    You can also add a side salad with a simple vinaigrette for extra greens.";
+        foods += "\n BEFORE BED : ";
+        foods += "\n    A small serving of almond or soy milk with a piece of fruit like an apple or a handful of grapes.\n";
+    }
+    else if (dietaryRestriction == "vegetarian" && fitnessGoal == "lose weight") {
+        foods = "\n The Meal Plan we recommend for your Diet";
+        foods += "\n BREAKFAST : ";
+        foods += "\n    A nutrient-dense smoothie bowl made with unsweetened almond milk, spinach, a frozen banana,";
+        foods += "\n    and a handful of berries. Top with a sprinkle of chia seeds and sliced almonds.";
+        foods += "\n LUNCH : ";
+        foods += "\n    A fresh salad with mixed greens, cherry tomatoes, cucumbers, red onion, chickpeas, and crumbled feta cheese.";
+        foods += "\n    Drizzle with a light vinaigrette made from olive oil and lemon juice.";
+        foods += "\n SNACK : ";
+        foods += "\n    Apple slices with a spoonful of almond butter or a small handful of unsalted nuts.";
+        foods += "\n DINNER : ";
+        foods += "\n    A vegetable stir-fry with tofu or tempeh, bell peppers, broccoli, snap peas, and carrots, ";
+        foods += "\n    served over a small portion of brown rice or quinoa.";
+        foods += "\n BEFORE BED : ";
+        foods += "\n    A small bowl of Greek yogurt with a drizzle of honey and a few berries.\n";
+    }
+    else if (dietaryRestriction == "vegetarian" && fitnessGoal == "build muscle") {
+        foods = "\n The Meal Plan we recommend for your Diet";
+        foods += "\n BREAKFAST : ";
+        foods += "\n    Start with a protein-packed smoothie made with unsweetened almond milk, spinach, a frozen banana, a handful of berries,";
+        foods += "\n    and a scoop of plant-based protein powder. Add a spoonful of peanut butter for healthy fats.";
+        foods += "\n LUNCH : ";
+        foods += "\n    A hearty quinoa and black bean salad with mixed greens, cherry tomatoes, cucumbers, red onion, ";
+        foods += "\n    and a lemon-tahini dressing. Top with some avocado slices for extra nutrients.";
+        foods += "\n SNACK : ";
+        foods += "\n    Greek yogurt with a sprinkle of granola and a drizzle of honey.";
+        foods += "\n DINNER : ";
+        foods += "\n    A tasty stir-fry with tofu or tempeh, bell peppers, broccoli, snap peas, and carrots,";
+        foods += "\n    served over brown rice or quinoa. Sprinkle with sesame seeds for added texture.";
+        foods += "\n BEFORE BED : ";
+        foods += "\n    A small serving of cottage cheese with a few nuts or seeds, or a handful of edamame.\n";
+    }
+    else if (dietaryRestriction == "vegetarian" && fitnessGoal == "maintain") {
+        foods = "\n The Meal Plan we recommend for your Diet";
+        foods += "\n BREAKFAST : ";
+        foods += "\n    Start your day with a bowl of overnight oats made with unsweetened almond milk, chia seeds, ";
+        foods += "\n    and topped with fresh berries and a handful of nuts or seeds for extra protein.";
+        foods += "\n LUNCH : ";
+        foods += "\n    A colorful quinoa salad with mixed greens, cherry tomatoes, cucumbers, shredded carrots, avocado, ";
+        foods += "\n    and a generous serving of black beans. Drizzle with a tangy lemon-tahini dressing.";
+        foods += "\n SNACK : ";
+        foods += "\n    Sliced veggies like bell peppers, carrots, and cucumber with a side of hummus.";
+        foods += "\n DINNER : ";
+        foods += "\n    A veggie-packed stir-fry with tofu or tempeh, bell peppers, broccoli, snap peas, ";
+        foods += "\n    and carrots, served over brown rice or quinoa.";
+        foods += "\n BEFORE BED : ";
+        foods += "\n    A small serving of Greek yogurt with a sprinkle of granola and a drizzle of honey.\n";
+    }
+    else if (dietaryRestriction == "pescatarian" && fitnessGoal == "lose weight") {
+        foods = "\n The Meal Plan we recommend for your Diet";
+        foods += "\n BREAKFAST : ";
+        foods += "\n    Start with a smoothie bowl made with unsweetened almond milk, spinach, a frozen banana,";
+        foods += "\n    and a handful of berries. Top with chia seeds and a few sliced almonds for protein.";
+        foods += "\n LUNCH : ";
+        foods += "\n    A fresh salad with mixed greens, cherry tomatoes, cucumber, avocado, ";
+        foods += "\n    and a grilled piece of salmon. Drizzle with a light lemon vinaigrette.";
+        foods += "\n SNACK : ";
+        foods += "\n    Sliced bell peppers and cucumber sticks with a side of hummus.";
+        foods += "\n DINNER : ";
+        foods += "\n    A veggie and shrimp stir-fry with bell peppers, broccoli, snap peas, ";
+        foods += "\n    and carrots, served over cauliflower rice.";
+        foods += "\n BEFORE BED : ";
+        foods += "\n    A small bowl of Greek yogurt with a sprinkle of flaxseeds or chia seeds.\n";
+    }
+    else if (dietaryRestriction == "pescatarian" && fitnessGoal == "build muscle") {
+        foods = "\n The Meal Plan we recommend for your Diet";
+        foods += "\n BREAKFAST : ";
+        foods += "\n    Protein Smoothie: Blend unsweetened almond milk, a handful of spinach, a frozen banana,";
+        foods += "\n    berries, a scoop of plant-based protein powder, and a spoonful of almond butter.";
+        foods += "\n LUNCH : ";
+        foods += "\n    Grilled Salmon Salad: Mixed greens, cherry tomatoes, cucumber, avocado, ";
+        foods += "\n    and grilled salmon, topped with a light lemon-tahini dressing.";
+        foods += "\n SNACK : ";
+        foods += "\n    A small bowl of Greek yogurt with a handful of mixed nuts and seeds.";
+        foods += "\n DINNER : ";
+        foods += "\n    Shrimp Stir-Fry: Shrimp with bell peppers, broccoli, snap peas, and carrots, ";
+        foods += "\n    served over quinoa or brown rice.";
+        foods += "\n BEFORE BED : ";
+        foods += "\n    Cottage cheese with a few sliced almonds or a small serving of edamame.\n";
+    }
+    else if (dietaryRestriction == "pescatarian" && fitnessGoal == "maintain") {
+        foods = "\n The Meal Plan we recommend for your Diet";
+        foods += "\n BREAKFAST : ";
+        foods += "\n    Smoothie Bowl: Blend unsweetened almond milk, spinach, a frozen banana, and a handful of berries.";
+        foods += "\n    Top with chia seeds, sliced almonds, and a sprinkle of granola.";
+        foods += "\n LUNCH : ";
+        foods += "\n    Grilled Salmon Salad: Mixed greens with cherry tomatoes, cucumber, red onion, avocado,  ";
+        foods += "\n    and grilled salmon. Drizzle with a light lemon vinaigrette.";
+        foods += "\n SNACK : ";
+        foods += "\n    Sliced bell peppers and carrot sticks with a side of hummus.";
+        foods += "\n DINNER : ";
+        foods += "\n    Shrimp Stir-Fry: Shrimp cooked with bell peppers, broccoli, snap peas,  ";
+        foods += "\n    and carrots, served over brown rice.";
+        foods += "\n BEFORE BED : ";
+        foods += "\n    A small serving of Greek yogurt with a drizzle of honey and a few berries.\n";
+    }
+    else if (dietaryRestriction == "gluten-free" && fitnessGoal == "lose weight") {
+        foods = "\n The Meal Plan we recommend for your Diet";
+        foods += "\n BREAKFAST : ";
+        foods += "\n    Smoothie Bowl: Blend unsweetened almond milk, spinach, a frozen banana, and a handful of berries. ";
+        foods += "\n    Top with chia seeds and sliced almonds for added protein and crunch.";
+        foods += "\n LUNCH : ";
+        foods += "\n    Quinoa Salad: Mixed greens, cherry tomatoes, cucumbers, red onion, and avocado with a generous serving of quinoa. ";
+        foods += "\n    with a generous serving of quinoa. Drizzle with a lemon-tahini dressing for added flavor.";
+        foods += "\n SNACK : ";
+        foods += "\n    Sliced bell peppers, carrots, and cucumber sticks with a side of hummus.";
+        foods += "\n DINNER : ";
+        foods += "\n    Grilled Chicken and Veggies: Seasoned and grilled chicken breast served with a side of roasted vegetables ";
+        foods += "\n    (like bell peppers, zucchini, and broccoli) and a portion of cauliflower rice.";
+        foods += "\n BEFORE BED : ";
+        foods += "\n    A small bowl of Greek yogurt with a sprinkle of flaxseeds or chia seeds for extra fiber and protein.\n";
+    }
+    else if (dietaryRestriction == "gluten-free" && fitnessGoal == "build muscle") {
+        foods = "\n The Meal Plan we recommend for your Diet";
+        foods += "\n BREAKFAST : ";
+        foods += "\n    Smoothie: Blend unsweetened almond milk, spinach, a frozen banana, berries, ";
+        foods += "\n    a scoop of plant-based protein powder, and a spoonful of almond butter.";
+        foods += "\n LUNCH : ";
+        foods += "\n    Quinoa and Black Bean Salad: Mixed greens, cherry tomatoes, cucumbers, red onion, ";
+        foods += "\n    avocado, quinoa, and black beans, with a light lemon-tahini dressing.";
+        foods += "\n SNACK : ";
+        foods += "\n    Greek yogurt (if you're okay with dairy, otherwise a vegan alternative) topped with mixed nuts and seeds.";
+        foods += "\n DINNER : ";
+        foods += "\n    Grilled Chicken or Tofu: Serve with roasted sweet potatoes and a side of steamed broccoli. ";
+        foods += "\n BEFORE BED : ";
+        foods += "\n    Cottage cheese (if you're okay with dairy, otherwise a small bowl of vegan Greek-style yogurt)";
+        foods += "\n    with a sprinkle of flaxseeds or chia seeds.\n";
+    }
+    else if (dietaryRestriction == "gluten-free" && fitnessGoal == "maintain") {
+        foods = "\n The Meal Plan we recommend for your Diet";
+        foods += "\n BREAKFAST : ";
+        foods += "\n    Smoothie Bowl: Blend unsweetened almond milk, spinach, a frozen banana, and a handful of berries. ";
+        foods += "\n    Top with chia seeds, sliced almonds, and gluten-free granola.";
+        foods += "\n LUNCH : ";
+        foods += "\n    Quinoa Salad: Mixed greens, cherry tomatoes, cucumbers, avocado, and a generous  ";
+        foods += "\n    serving of cooked quinoa. Drizzle with a lemon-tahini dressing.";
+        foods += "\n SNACK : ";
+        foods += "\n    Veggie sticks (like bell peppers, carrots, and cucumber) with a side of hummus.";
+        foods += "\n DINNER : ";
+        foods += "\n    Grilled Salmon or Tofu: Serve with roasted vegetables ";
+        foods += "\n    (like bell peppers, zucchini, and broccoli) and a portion of brown rice.";
+        foods += "\n BEFORE BED : ";
+        foods += "\n    A small bowl of Greek yogurt (or a vegan alternative) with a sprinkle of flaxseeds or chia seeds.\n";
+        }
+    else if (dietaryRestriction == "keto" && fitnessGoal == "lose weight") {
+        foods = "\n The Meal Plan we recommend for your Diet";
+        foods += "\n BREAKFAST : ";
+        foods += "\n    Keto Omelette: Made with three eggs, spinach, mushrooms,  ";
+        foods += "\n    and a sprinkle of cheese. Cooked in olive oil or butter.";
+        foods += "\n LUNCH : ";
+        foods += "\n    Avocado Chicken Salad: Diced chicken breast, avocado, mixed greens, ";
+        foods += "\n    cherry tomatoes, and a high-fat dressing like olive oil and lemon juice.";
+        foods += "\n SNACK : ";
+        foods += "\n    A handful of nuts (almonds, walnuts, or macadamia nuts).";
+        foods += "\n DINNER : ";
+        foods += "\n    Grilled Salmon with Asparagus: Grilled salmon fillet served with steamed ";
+        foods += "\n    or grilled asparagus, drizzled with lemon butter sauce.";
+        foods += "\n BEFORE BED : ";
+        foods += "\n    Greek Yogurt: Plain Greek yogurt with a sprinkle of chia seeds and a few berries (optional).\n";
+        }
+    else if (dietaryRestriction == "keto" && fitnessGoal == "build muscle") {
+        foods = "\n The Meal Plan we recommend for your Diet";
+        foods += "\n BREAKFAST : ";
+        foods += "\n    Keto Omelette: Made with three eggs, spinach, mushrooms, cheese,  ";
+        foods += "\n    and avocado. Cooked in olive oil or butter. A side of smoked salmon.";
+        foods += "\n LUNCH : ";
+        foods += "\n    Grilled Chicken Salad: Mixed greens, cherry tomatoes, cucumber, ";
+        foods += "\n    and grilled chicken breast, topped with olive oil ";
+        foods += "\n    and lemon juice dressing. Add avocado for healthy fats.";
+        foods += "\n SNACK : ";
+        foods += "\n    A handful of mixed nuts (almonds, walnuts, macadamia nuts) and a slice of cheese.";
+        foods += "\n DINNER : ";
+        foods += "\n    Steak with Asparagus: Grilled steak with a side of buttered ";
+        foods += "\n    asparagus and a small portion of cauliflower mash.";
+        foods += "\n BEFORE BED : ";
+        foods += "\n    Greek Yogurt: Full-fat Greek yogurt with a sprinkle of chia seeds and a few berries (optional).\n";
+        }
+    else if (dietaryRestriction == "keto" && fitnessGoal == "maintain") {
+        foods = "\n The Meal Plan we recommend for your Diet";
+        foods += "\n BREAKFAST : ";
+        foods += "\n    Keto Omelette: Made with three eggs, spinach, mushrooms, and cheese, ";
+        foods += "\n    cooked in olive oil or butter. A side of avocado for healthy fats.";
+        foods += "\n LUNCH : ";
+        foods += "\n    Grilled Chicken Salad: Mixed greens, cherry tomatoes, cucumber, ";
+        foods += "\n    and grilled chicken breast, topped with olive oil and lemon juice dressing.";
+        foods += "\n    Add some olives for extra flavor";
+        foods += "\n SNACK : ";
+        foods += "\n    A handful of mixed nuts (almonds, walnuts, macadamia nuts) or celery sticks with almond butter.";
+        foods += "\n DINNER : ";
+        foods += "\n    Salmon with Asparagus: Grilled salmon fillet with a side of buttered ";
+        foods += "\n    asparagus and a small serving of cauliflower mash.";
+        foods += "\n BEFORE BED : ";
+        foods += "\n    Greek Yogurt: Full-fat Greek yogurt with a sprinkle of chia seeds and a few berries (optional).\n";
+        }
+    else if (dietaryRestriction == "none" && fitnessGoal == "lose weight") {
+        foods = "\n The Meal Plan we recommend for your Diet";
+        foods += "\n BREAKFAST : ";
+        foods += "\n    Smoothie: Blend unsweetened almond milk, spinach, a frozen banana, ";
+        foods += "\n    berries, and a scoop of plant-based protein powder. Add a spoonful of";
+        foods += "\n    chia seeds for extra fiber.";
+        foods += "\n LUNCH : ";
+        foods += "\n    Grilled Chicken Salad: Mixed greens, cherry tomatoes, cucumbers, ";
+        foods += "\n    red onion, and grilled chicken breast. Drizzle with a light lemon vinaigrette.";
+        foods += "\n SNACK : ";
+        foods += "\n    Sliced bell peppers and carrot sticks with a side of hummus.";
+        foods += "\n DINNER : ";
+        foods += "\n    Vegetable Stir-Fry: Mixed vegetables (like bell peppers, broccoli, ";
+        foods += "\n    snap peas, and carrots) with tofu or shrimp, served over cauliflower rice.";
+        foods += "\n BEFORE BED : ";
+        foods += "\n    A small bowl of Greek yogurt with a sprinkle of flaxseeds or chia seeds for added fiber and protein.\n";
+        }
+    else if (dietaryRestriction == "none" && fitnessGoal == "build muscle") {
+        foods = "\n The Meal Plan we recommend for your Diet";
+        foods += "\n BREAKFAST : ";
+        foods += "\n    Protein Pancakes: Made with oat flour, banana, eggs, and a scoop of protein powder.";
+        foods += "\n    Top with fresh berries and a dollop of Greek yogurt.";
+        foods += "\n    Smoothie: Blend unsweetened almond milk, spinach, a frozen banana,";
+        foods += "\n    berries, and a spoonful of peanut butter.";
+        foods += "\n LUNCH : ";
+        foods += "\n    Grilled Chicken Wrap: Whole wheat tortilla with grilled chicken breast,mixed greens, ";
+        foods += "\n    avocado, and a sprinkle of cheese. Pair with a side of mixed veggies.";
+        foods += "\n SNACK : ";
+        foods += "\n    Greek yogurt with a handful of mixed nuts and seeds.";
+        foods += "\n DINNER : ";
+        foods += "\n    Salmon with Sweet Potato and Asparagus: Grilled salmon fillet served with  ";
+        foods += "\n    roasted sweet potatoes and steamed asparagus.";
+        foods += "\n BEFORE BED : ";
+        foods += "\n    Cottage Cheese: A small bowl of cottage cheese with a sprinkle of flaxseeds or chia seeds.\n";
+        }
+    else if (dietaryRestriction == "none" && fitnessGoal == "maintain") {
+        foods = "\n The Meal Plan we recommend for your Diet";
+        foods += "\n BREAKFAST : ";
+        foods += "\n    Oatmeal: Made with unsweetened almond milk, topped with fresh berries, chia seeds,";
+        foods += "\n    and a drizzle of honey. A side of Greek yogurt for added protein.";
+        foods += "\n LUNCH : ";
+        foods += "\n    Quinoa Salad: Mixed greens, cherry tomatoes, cucumbers, red onion, avocado,";
+        foods += "\n    and a generous serving of cooked quinoa. Drizzle with a lemon-tahini dressing.";
+        foods += "\n SNACK : ";
+        foods += "\n    Sliced bell peppers, carrots, and cucumber sticks with a side of hummus.";
+        foods += "\n DINNER : ";
+        foods += "\n    Grilled Chicken with Vegetables: Grilled chicken breast served with a side ";
+        foods += "\n    of roasted vegetables (like bell peppers, zucchini, and broccoli) and a portion of brown rice.";
+        foods += "\n BEFORE BED : ";
+        foods += "\n    A small bowl of cottage cheese or Greek yogurt with a sprinkle of flaxseeds or chia seeds.\n";
+        }
+
+    cout << "\n--- Your Fitness Profile ---" << endl;
+    cout << "Age: " << age << " years" << endl;
+    cout << "Fitness Goal: " << fitnessGoal << endl;
+    cout << "Dietary Restriction: " << dietaryRestriction << endl;
+    cout << "Available Time for Exercises: " << availableTime << " hours/week" << endl;
+    cout << "Health Condition: " << healthCondition << endl;
+    cout << "Weight: " << weight << " kg" << endl;
+    cout << "Height: " << height << " meters" << endl;
+    cout << "Workout Location Preference: " << locationPreference << endl;
+
+    cout << "\n--- BMI Results ---" << endl;
+    cout << "Your BMI is: " << bmi << endl;
+    if (bmi < 18) {
+        cout << "You are underweight." << endl;
+    }
+    else if (bmi >= 18 && bmi <= 25) {
+        cout << "You have a normal weight." << endl;
+    }
+    else if (bmi > 25 && bmi <= 30) {
+        cout << "You are overweight." << endl;
+    }
+    else {
+        cout << "You are obese." << endl;
+    }
+
+    cout << "\nYour daily calories should be: " << dailyCalories << " kcal" << endl;
+    cout << "Your recommended exercises are: " << exerciseSuggestion << endl;
+    cout << routine << endl;
+    cout << "Your recommended water intake is: " << waterIntake << " liters per day" << endl;
+
+    cout << "\n--- Dietary Recommendation ---" << endl;
+    cout << dietRecommendation << endl;
+    cout << foods << endl;
+
+    return 0;
+}
